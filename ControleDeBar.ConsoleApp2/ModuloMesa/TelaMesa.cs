@@ -19,7 +19,7 @@ namespace ControleDeBar.ConsoleApp2.ModuloMesa
             Console.WriteLine();
 
             Console.WriteLine(
-                "{0, -10} | {1, -30} | {2, -30}",
+                "{0, -10} | {1, -20} | {2, -30}",
                 "Id", "Número", "Capacidade", "Status"
             );
 
@@ -35,7 +35,7 @@ namespace ControleDeBar.ConsoleApp2.ModuloMesa
                 string statusMesa = m.EstaOcupada ? "Ocupada" : "Disponível";
 
                 Console.WriteLine(
-                  "{0, -10} | {1, -30} | {2, -30}",
+                  "{0, -10} | {1, -20} | {2, -30}",
                     m.Id, m.Numero, m.Capacidade, statusMesa
                 );
             }
