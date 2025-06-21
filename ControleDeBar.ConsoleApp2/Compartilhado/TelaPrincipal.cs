@@ -1,6 +1,7 @@
 ﻿
 using ControleDeBar.ConsoleApp2.ModuloGarcom;
 using ControleDeBar.ConsoleApp2.ModuloMesa;
+using ControleDeBar.ConsoleApp2.ModuloProduto;
 
 namespace ControleDeBar.ConsoleApp2.Compartilhado
 {
@@ -14,6 +15,9 @@ namespace ControleDeBar.ConsoleApp2.Compartilhado
         private RepositorioGarcom repositorioGarcom;
         private TelaGarcom telaGarcom;
 
+        private RepositorioProduto repositorioProduto;
+        private TelaProduto telaProduto;
+
         public TelaPrincipal()
         {
             repositorioMesa = new RepositorioMesa();
@@ -21,6 +25,9 @@ namespace ControleDeBar.ConsoleApp2.Compartilhado
 
             repositorioGarcom = new RepositorioGarcom();
             telaGarcom = new TelaGarcom(repositorioGarcom);
+
+            repositorioProduto = new RepositorioProduto();
+            telaProduto = new TelaProduto(repositorioProduto);
         }
 
         public void ApresentarMenuPrincipal()
@@ -54,7 +61,7 @@ namespace ControleDeBar.ConsoleApp2.Compartilhado
                 return telaGarcom;
 
             if (opcaoEscolhida == '3')
-                return null;
+                return telaProduto;
 
             if (opcaoEscolhida == '4')
                 return null;
