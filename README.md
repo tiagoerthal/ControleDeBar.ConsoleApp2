@@ -1,18 +1,18 @@
-# ?? Controle de Bar ??
+#  Controle de Bar 
 
 Controle de operações diárias de um bar, com gestão de mesas, garçons, produtos e contas.
 
 ---
 
-## ?? Sumário
+##  Sumário
 - [Visão Geral](#vis%C3%A3o-geral)  
 - [Funcionalidades](#funcionalidades)  
-- [?? Requisitos](#requisitos)  
-- [?? Pré-requisitos](#pr%C3%A9-requisitos)  
-- [?? Instalação](#instala%C3%A7%C3%A3o)  
-- [?? Uso](#uso)  
-- [?? Contribuição](#contribui%C3%A7%C3%A3o)  
-- [?? Licença](#licen%C3%A7a)
+- [ Requisitos](#requisitos)  
+- [ Pré-requisitos](#pr%C3%A9-requisitos)  
+- [ Instalação](#instala%C3%A7%C3%A3o)  
+- [ Uso](#uso)  
+- [ Contribuição](#contribui%C3%A7%C3%A3o)  
+- [ Licença](#licen%C3%A7a)
 
 
 ---
@@ -31,8 +31,8 @@ Um sistema em C# (console ou web) para gerenciamento completo de um bar:
 - Criar, editar, excluir, listar e ver detalhes de mesas  
 - Status: **Livre** / **Ocupada**  
 - Regras:
-  - Número (único, ??1)
-  - Lugares (??1)
+  - Número 
+  - Lugares
   - Status padrão: Livre
   - Impede exclusão se houver pedidos
 
@@ -48,7 +48,7 @@ Um sistema em C# (console ou web) para gerenciamento completo de um bar:
 - Criar, editar, excluir e listar produtos  
 - Regras:
   - Nome (2–100 caracteres)
-  - Preço (>?0, 2 decimais)
+  - Preço (>0, 2 decimais)
   - Nome único
   - Impede exclusão se houver pedidos
 
