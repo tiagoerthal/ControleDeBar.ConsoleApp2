@@ -12,6 +12,164 @@ namespace ControleDeBar.ConsoleApp2.ModuloProduto
 
         }
 
+        public override void CadastrarRegistro()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine($"             Cadastro de {nomeEntidade}");
+            Console.Write("------------------------------------------");
+            Console.ResetColor();
+
+            Console.WriteLine();
+
+            Produto novoRegistro = ObterDados();
+
+            string erros = novoRegistro.Validar();
+
+            if (erros.Length > 0)
+            {
+                Console.WriteLine();
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(erros);
+                Console.ResetColor();
+
+                ApresentarMensagem("Digite ENTER para continuar...", ConsoleColor.DarkYellow);
+
+                CadastrarRegistro();
+
+                return;
+            }
+            Produto[] registros = repositorio.SelecionarRegistros();
+
+            for (int i = 0; i < registros.Length; i++)
+            {
+                Produto amigoRegistrado = registros[i];
+
+                if (amigoRegistrado == null)
+                    continue;
+
+                if (amigoRegistrado.Nome == novoRegistro.Nome)
+                {
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("------------------------------------------");
+                    Console.WriteLine("Um produto com este nome já foi cadastrado!");
+                    Console.Write("------------------------------------------");
+                    Console.ResetColor();
+
+                    ApresentarMensagem("Digite ENTER para continuar...", ConsoleColor.DarkYellow);
+                    CadastrarRegistro();
+                    return;
+                }
+            }
+
+            repositorio.CadastrarRegistro(novoRegistro);
+
+            Console.Clear();
+            Console.Write("------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"\n{nomeEntidade} cadastrado com sucesso!");
+            Console.ResetColor();
+            Console.Write("------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\nDigite ENTER para continuar...");
+            Console.ResetColor();
+            Console.Write("------------------------------------------");
+            Console.ReadLine();
+        }
+        public override void EditarRegistro()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine($"            Edição de {nomeEntidade}");
+            Console.WriteLine("------------------------------------------");
+            Console.ResetColor();
+            Console.WriteLine();
+
+            VisualizarRegistros(false);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+
+            Console.Clear();
+            Console.WriteLine();
+            Console.Write("Digite o id do registro que deseja selecionar: ");
+            int idSelecionado = Convert.ToInt32(Console.ReadLine());
+            Console.Clear();
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine($"            Edição de {nomeEntidade}");
+            Console.WriteLine("------------------------------------------");
+            Console.ResetColor();
+
+            Produto registroAtualizado = ObterDados();
+
+            string erros = registroAtualizado.Validar();
+
+            if (erros.Length > 0)
+            {
+                Console.WriteLine();
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(erros);
+                Console.ResetColor();
+
+                ApresentarMensagem("Digite ENTER para continuar...", ConsoleColor.DarkYellow); 
+
+
+                EditarRegistro();
+
+                return;
+            }
+
+            Produto[] registros = repositorio.SelecionarRegistros();
+
+            for (int i = 0; i < registros.Length; i++)
+            {
+                Produto garconRegistrado = registros[i];
+
+                if (garconRegistrado == null)
+                    continue;
+
+                if (
+                    garconRegistrado.Id != idSelecionado &&
+                    garconRegistrado.Nome == registroAtualizado.Nome)
+
+                {
+                    Console.WriteLine();
+
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("------------------------------------------");
+                    Console.WriteLine("Um produto com este nome já foi cadastrado!");
+                    Console.Write("------------------------------------------");
+
+                    Console.ResetColor();
+
+                    ApresentarMensagem("Digite ENTER para continuar...", ConsoleColor.DarkYellow); 
+
+
+                    EditarRegistro();
+
+                    return;
+                }
+            }
+
+            repositorio.EditarRegistro(idSelecionado, registroAtualizado);
+
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine($"{nomeEntidade} editado com sucesso!");
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("Digite ENTER para continuar...");
+            Console.Write("------------------------------------------");
+            Console.WriteLine();
+
+            Console.ResetColor();
+            Console.ReadLine();
+        }
+
         public override void VisualizarRegistros(bool exibirCabecalho)
         {
             if (exibirCabecalho)
