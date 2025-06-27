@@ -169,15 +169,10 @@ namespace ControleDeBar.ConsoleApp2.ModuloConta
                 "Id", "Titular", "Mesa", "Garçom", "Abertura", "Status"
             );
 
-            Conta[] contas = repositorioConta.SelecionarContas();
+            List<Conta> contas = repositorioConta.SelecionarContas();
 
-            for (int i = 0; i < contas.Length; i++)
+            foreach (Conta c in contas)
             {
-                Conta c = contas[i];
-
-                if (c == null)
-                    continue;
-
                 string statusConta = c.EstaAberta ? "Aberta" : "Fechada";
 
                 Console.WriteLine(
@@ -185,6 +180,7 @@ namespace ControleDeBar.ConsoleApp2.ModuloConta
                     c.Id, c.Titular, c.Mesa.Numero, c.Garcom.Nome, c.Abertura.ToShortDateString(), statusConta
                 );
             }
+
 
             ApresentarMensagem("Digite ENTER para continuar...", ConsoleColor.DarkYellow);
         }
@@ -201,15 +197,10 @@ namespace ControleDeBar.ConsoleApp2.ModuloConta
                 "Id", "Titular", "Mesa", "Garçom", "Abertura", "Status"
             );
 
-            Conta[] contas = repositorioConta.SelecionarContasEmAberto();
+            List<Conta> contasEmAberto = repositorioConta.SelecionarContasEmAberto();
 
-            for (int i = 0; i < contas.Length; i++)
+            foreach (Conta c in contasEmAberto)
             {
-                Conta c = contas[i];
-
-                if (c == null)
-                    continue;
-
                 string statusConta = c.EstaAberta ? "Aberta" : "Fechada";
 
                 Console.WriteLine(
@@ -234,15 +225,10 @@ namespace ControleDeBar.ConsoleApp2.ModuloConta
                 "Id", "Titular", "Mesa", "Garçom", "Abertura", "Status"
             );
 
-            Conta[] contas = repositorioConta.SelecionarContasFechadas();
+            List<Conta> contasFechadas = repositorioConta.SelecionarContasFechadas();
 
-            for (int i = 0; i < contas.Length; i++)
+            foreach (Conta c in contasFechadas)
             {
-                Conta c = contas[i];
-
-                if (c == null)
-                    continue;
-
                 string statusConta = c.EstaAberta ? "Aberta" : "Fechada";
 
                 Console.WriteLine(
@@ -274,15 +260,10 @@ namespace ControleDeBar.ConsoleApp2.ModuloConta
 
             decimal totalFaturamento = 0.0m;
 
-            Conta[] contasFaturamento = repositorioConta.SelecionarContasPorData(dataFaturamento);
+            List<Conta> contasFaturamento = repositorioConta.SelecionarContasPorData(dataFaturamento);
 
-            for (int i = 0; i < contasFaturamento.Length; i++)
+            foreach (Conta c in contasFaturamento)
             {
-                Conta c = contasFaturamento[i];
-
-                if (c == null)
-                    continue;
-
                 totalFaturamento += c.CalcularValorTotal();
 
                 string statusConta = c.EstaAberta ? "Aberta" : "Fechada";
