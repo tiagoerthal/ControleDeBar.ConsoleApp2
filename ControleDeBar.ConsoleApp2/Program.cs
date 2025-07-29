@@ -1,9 +1,10 @@
-﻿using ControleDeBar.ConsoleApp2.Compartilhado;
+﻿
+using ControleDeBar.ConsoleApp2.Compartilhado;
 using ControleDeBar.ConsoleApp2.ModuloConta;
 
-namespace ControleDeBar.ConsoleApp2
+namespace ControleDeBar.ConsoleApp
 {
-    class Program
+    internal class Program
     {
         static void Main(string[] args)
         {
@@ -55,6 +56,8 @@ namespace ControleDeBar.ConsoleApp2
                         case '4': telaEscolhida.VisualizarRegistros(true); break;
                     }
                 }
+
+
             }
         }
     }

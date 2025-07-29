@@ -4,7 +4,6 @@ using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Dominio.ModuloProduto;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace ControleDeBar.Infraestrutura.Arquivos.Compartilhado;
 
@@ -20,7 +19,7 @@ public class ContextoDados
 
     public ContextoDados() { }
 
-    public ContextoDados(bool carregarDados)
+    public ContextoDados(bool carregarDados): this()
     {
         if (carregarDados)
             Carregar();
@@ -35,7 +34,7 @@ public class ContextoDados
         jsonOptions.WriteIndented = true;
         jsonOptions.ReferenceHandler = ReferenceHandler.Preserve;
 
-        var jsonString = JsonSerializer.Serialize(this);
+        var jsonString = JsonSerializer.Serialize(this, jsonOptions);
 
         if (!Directory.Exists(pastaArmazenamento))
             Directory.CreateDirectory(pastaArmazenamento);
@@ -56,7 +55,7 @@ public class ContextoDados
         JsonSerializerOptions jsonOptions = new JsonSerializerOptions();
         jsonOptions.ReferenceHandler = ReferenceHandler.Preserve;
 
-        ContextoDados? contextoArmazenado = JsonSerializer.Deserialize<ContextoDados>(jsonString);
+        ContextoDados? contextoArmazenado = JsonSerializer.Deserialize<ContextoDados>(jsonString, jsonOptions);
 
         if (contextoArmazenado == null) return;
 

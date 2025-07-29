@@ -12,7 +12,11 @@ public abstract class RepositorioBaseEmArquivo<Tipo> where Tipo : EntidadeBase<T
     protected RepositorioBaseEmArquivo(ContextoDados contextoDados)
     {
         this.contextoDados = contextoDados;
+
+        registros = ObterRegistros();
     }
+
+    protected abstract List<Tipo> ObterRegistros();
 
     public void CadastrarRegistro(Tipo novoRegistro)
     {
