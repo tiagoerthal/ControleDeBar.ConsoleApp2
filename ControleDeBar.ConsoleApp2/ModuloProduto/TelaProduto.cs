@@ -1,7 +1,7 @@
 ﻿
-
 using ControleDeBar.ConsoleApp2.Compartilhado;
-using ControleDeBar.ConsoleApp2.ModuloProduto;
+using ControleDeBar.Dominio.ModuloProduto;
+using ControleDeBar.Infraestrutura.Memoria.ModuloProduto;
 
 namespace ControleDeBar.ConsoleApp2.ModuloProduto
 {

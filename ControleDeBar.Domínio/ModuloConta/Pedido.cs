@@ -1,8 +1,6 @@
-﻿
+﻿using ControleDeBar.Dominio.ModuloProduto;
 
-using ControleDeBar.ConsoleApp2.ModuloProduto;
-
-namespace ControleDeBar.ConsoleApp2.ModuloConta
+namespace ControleDeBar.Dominio.ModuloConta
 {
     public class Pedido
     {

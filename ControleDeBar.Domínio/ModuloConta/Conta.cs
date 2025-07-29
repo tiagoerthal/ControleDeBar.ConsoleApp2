@@ -1,11 +1,9 @@
-﻿
+﻿using ControleDeBar.Dominio.Compartilhado;
+using ControleDeBar.Dominio.ModuloGarcom;
+using ControleDeBar.Dominio.ModuloMesa;
+using ControleDeBar.Dominio.ModuloProduto;
 
-using ControleDeBar.ConsoleApp2.Compartilhado;
-using ControleDeBar.ConsoleApp2.ModuloGarcom;
-using ControleDeBar.ConsoleApp2.ModuloMesa;
-using ControleDeBar.ConsoleApp2.ModuloProduto;
-
-namespace ControleDeBar.ConsoleApp2.ModuloConta
+namespace ControleDeBar.Dominio.ModuloConta
 {
     public class Conta : EntidadeBase<Conta>
     {

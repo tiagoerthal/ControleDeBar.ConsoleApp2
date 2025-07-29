@@ -1,5 +1,5 @@
 ﻿
-namespace ControleDeBar.ConsoleApp2.Compartilhado
+namespace ControleDeBar.Dominio.Compartilhado
 {
     public abstract class EntidadeBase<Tipo>
     {

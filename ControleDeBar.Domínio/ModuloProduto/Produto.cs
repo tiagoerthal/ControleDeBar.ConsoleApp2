@@ -1,8 +1,5 @@
-﻿
-
-using ControleDeBar.ConsoleApp2.Compartilhado;
-
-namespace ControleDeBar.ConsoleApp2.ModuloProduto
+﻿using ControleDeBar.Dominio.Compartilhado;
+namespace ControleDeBar.Dominio.ModuloProduto
 {
     public class Produto : EntidadeBase<Produto>
     {

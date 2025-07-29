@@ -1,8 +1,13 @@
 ﻿
 using System;
+using ControleDeBar.ConsoleApp2.ModuloConta;
 using ControleDeBar.ConsoleApp2.ModuloGarcom;
 using ControleDeBar.ConsoleApp2.ModuloMesa;
 using ControleDeBar.ConsoleApp2.ModuloProduto;
+using ControleDeBar.Infraestrutura.Memoria.ModuloConta;
+using ControleDeBar.Infraestrutura.Memoria.ModuloGarcom;
+using ControleDeBar.Infraestrutura.Memoria.ModuloMesa;
+using ControleDeBar.Infraestrutura.Memoria.ModuloProduto;
 
 namespace ControleDeBar.ConsoleApp2.Compartilhado
 {

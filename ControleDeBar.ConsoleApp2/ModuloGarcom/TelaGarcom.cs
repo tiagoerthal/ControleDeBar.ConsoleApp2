@@ -1,7 +1,7 @@
 ﻿
-using System;
 using ControleDeBar.ConsoleApp2.Compartilhado;
-using ControleDeBar.ConsoleApp2.ModuloMesa;
+using ControleDeBar.Dominio.ModuloGarcom;
+using ControleDeBar.Infraestrutura.Memoria.ModuloGarcom;
 
 namespace ControleDeBar.ConsoleApp2.ModuloGarcom
 {

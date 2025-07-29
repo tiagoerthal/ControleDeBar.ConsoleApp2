@@ -1,4 +1,7 @@
 ﻿
+using ControleDeBar.Dominio.Compartilhado;
+using ControleDeBar.Infraestrutura.Memoria.Compartilhado;
+
 namespace ControleDeBar.ConsoleApp2.Compartilhado
 {
     public abstract class TelaBase<Tipo> where Tipo : EntidadeBase<Tipo>

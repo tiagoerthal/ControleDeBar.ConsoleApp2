@@ -1,5 +1,6 @@
-﻿
-namespace ControleDeBar.ConsoleApp2.Compartilhado
+﻿using ControleDeBar.Dominio.Compartilhado;
+
+namespace ControleDeBar.Infraestrutura.Memoria.Compartilhado
 {
     public abstract class RepositorioBase<Tipo> where Tipo : EntidadeBase<Tipo>
     {

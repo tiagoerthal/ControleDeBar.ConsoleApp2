@@ -1,9 +1,7 @@
 ﻿
 using System.Text.RegularExpressions;
-using System;
-using ControleDeBar.ConsoleApp2.Compartilhado;
-
-namespace ControleDeBar.ConsoleApp2.ModuloGarcom
+using ControleDeBar.Dominio.Compartilhado;
+namespace ControleDeBar.Dominio.ModuloGarcom
 {
     public class Garcom : EntidadeBase<Garcom>
     {

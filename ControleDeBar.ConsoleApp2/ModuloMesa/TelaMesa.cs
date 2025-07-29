@@ -1,5 +1,7 @@
 ﻿
 using ControleDeBar.ConsoleApp2.Compartilhado;
+using ControleDeBar.Dominio.ModuloMesa;
+using ControleDeBar.Infraestrutura.Memoria.ModuloMesa;
 
 namespace ControleDeBar.ConsoleApp2.ModuloMesa
 {
