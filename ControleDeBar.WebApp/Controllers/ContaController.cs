@@ -1,6 +1,7 @@
 ﻿using ControleDeBar.Dominio.ModuloConta;
 using ControleDeBar.Dominio.ModuloGarcom;
 using ControleDeBar.Dominio.ModuloMesa;
+using ControleDeBar.Dominio.ModuloProduto;
 using ControleDeBar.Infraestrutura.Arquivos.Compartilhado;
 using ControleDeBar.Infraestrutura.Arquivos.ModuloConta;
 using ControleDeBar.Infraestrutura.Arquivos.ModuloGarcom;
@@ -28,7 +29,6 @@ public class ContaController : Controller
         repositorioGarcom = new RepositorioGarcomEmArquivo(contextoDados);
         repositorioProduto = new RepositorioProdutoEmArquivo(contextoDados);
     }
-
 
     [HttpGet]
     public IActionResult Index()
@@ -69,5 +69,60 @@ public class ContaController : Controller
         repositorioConta.CadastrarRegistro(conta);
 
         return RedirectToAction(nameof(Index));
+    }
+
+    [HttpGet]
+    public IActionResult GerenciarPedidos(int id)
+    {
+        Conta contaSelecionada = repositorioConta.SelecionarRegistroPorId(id);
+
+        List<Produto> produtos = repositorioProduto.SelecionarRegistros();
+
+        GerenciarPedidosViewModel gerenciarPedidosVm = new GerenciarPedidosViewModel(
+            contaSelecionada,
+            produtos
+        );
+
+        return View(gerenciarPedidosVm);
+    }
+
+    [HttpPost]
+    public IActionResult AdicionarPedido(int id, AdicionarPedidoViewModel adicionarPedidoVm)
+    {
+        Conta contaSelecionada = repositorioConta.SelecionarRegistroPorId(id);
+
+        Produto produtoSelecionado = repositorioProduto.SelecionarRegistroPorId(adicionarPedidoVm.IdProduto);
+
+        Pedido pedido = contaSelecionada.RegistrarPedido(produtoSelecionado, adicionarPedidoVm.QuantidadeSolicitada);
+
+        contextoDados.Salvar();
+
+        List<Produto> produtos = repositorioProduto.SelecionarRegistros();
+
+        GerenciarPedidosViewModel gerenciarPedidosVm = new GerenciarPedidosViewModel(
+            contaSelecionada,
+            produtos
+        );
+
+        return View(nameof(GerenciarPedidos), gerenciarPedidosVm);
+    }
+
+    [HttpPost]
+    public IActionResult RemoverPedido(int id, int idPedido)
+    {
+        Conta contaSelecionada = repositorioConta.SelecionarRegistroPorId(id);
+
+        contaSelecionada.RemoverPedido(idPedido);
+
+        contextoDados.Salvar();
+
+        List<Produto> produtos = repositorioProduto.SelecionarRegistros();
+
+        GerenciarPedidosViewModel gerenciarPedidosVm = new GerenciarPedidosViewModel(
+            contaSelecionada,
+            produtos
+        );
+
+        return View(nameof(GerenciarPedidos), gerenciarPedidosVm);
     }
 }

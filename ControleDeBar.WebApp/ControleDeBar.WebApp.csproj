@@ -5,8 +5,15 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+	
+	<ItemGroup>
+		<Compile Remove="wwwroot\lib\bootstrap\**" />
+		<Content Remove="wwwroot\lib\bootstrap\**" />
+		<EmbeddedResource Remove="wwwroot\lib\bootstrap\**" />
+		<None Remove="wwwroot\lib\bootstrap\**" />
+	</ItemGroup>
 
-  <ItemGroup>
+	<ItemGroup>
     <ProjectReference Include="..\ControleDeBar.Domínio\ControleDeBar.Dominio.csproj" />
     <ProjectReference Include="..\ControleDeBar.Infraestrutura.Arquivos\ControleDeBar.Infraestrutura.Arquivos.csproj" />
     <ProjectReference Include="..\ControleDeBar.Infraestrutura\ControleDeBar.Infraestrutura.Memoria.csproj" />
