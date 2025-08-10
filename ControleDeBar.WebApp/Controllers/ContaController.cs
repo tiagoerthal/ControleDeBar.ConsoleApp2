@@ -72,6 +72,35 @@ public class ContaController : Controller
     }
 
     [HttpGet]
+    public IActionResult Fechar(int id)
+    {
+        Conta contaSelecionada = repositorioConta.SelecionarRegistroPorId(id);
+
+        FecharContaViewModel fecharContaVm = new FecharContaViewModel(
+            contaSelecionada.Id,
+            contaSelecionada.Titular,
+            contaSelecionada.Mesa.Numero,
+            contaSelecionada.Garcom.Nome,
+            contaSelecionada.CalcularValorTotal(),
+            contaSelecionada.Pedidos
+        );
+
+        return View(fecharContaVm);
+    }
+
+    [HttpPost]
+    public IActionResult FecharConfirmado(int id)
+    {
+        Conta contaSelecionada = repositorioConta.SelecionarRegistroPorId(id);
+
+        contaSelecionada.Fechar();
+
+        contextoDados.Salvar();
+
+        return RedirectToAction(nameof(Index));
+    }
+
+    [HttpGet]
     public IActionResult GerenciarPedidos(int id)
     {
         Conta contaSelecionada = repositorioConta.SelecionarRegistroPorId(id);
@@ -125,4 +154,3 @@ public class ContaController : Controller
 
         return View(nameof(GerenciarPedidos), gerenciarPedidosVm);
     }
-}
