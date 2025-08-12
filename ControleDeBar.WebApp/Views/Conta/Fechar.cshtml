@@ -4,9 +4,8 @@
     ViewBag.Titulo = "Fechamento de Conta";
 }
 
-<hr />
-<div class="row justify-content-center my-5">
-    <div class="col-md-8">
+<div class="row justify-content-center">
+    <div class="col">
         <div class="card rounded-4 border-0">
             <div class="card-body p-md-5">
                 <form asp-action="FecharConfirmado" asp-route-id="@Model.Id">
@@ -57,7 +56,7 @@
                     }
 
                     <div class="form-group d-flex align-items-center justify-content-end gap-3 mt-5">
-                        <a href="/contas">Voltar para a listagem</a>
+                        <a asp-action="Index">Voltar para a listagem</a>
                         <button type="submit" class="btn btn-danger rounded-3 px-5">Confirmar</button>
                     </div>
                 </form>
